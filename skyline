@@ -1,0 +1,18 @@
+   def skyline(*grid):
+        sky = 0 
+        max1 = []
+        max2 = []
+
+        #get the largest grid dimension  
+        for i in grid:
+            max1.append(max(i))
+
+        # get the max of each nested list 
+        for j in map(list, zip(*grid)):
+            max2.append(max(j))
+        # determine the max without messing up skyline 
+
+        for i1, val1 in enumerate(max1):
+            for i2, val2 in enumerate(max2):
+                sky += (min(val1, val2)- grid[i1][i2])
+        return sky
